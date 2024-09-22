@@ -1,10 +1,9 @@
 <template>
-  <button @click="increment">Count is {{ count }}</button>
+  <div>
+    <TemplateBasics />
+  </div>
 </template>
 
 <script setup>
-import {ref} from "vue";
-
-const count = ref(0);
-const increment = () => count.value++;
+import TemplateBasics from './components/TemplateBasics.vue';
 </script>
