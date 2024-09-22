@@ -4,6 +4,21 @@
 
   <!-- Reactive -->
   <button @click="incrementCount">Count is {{ state.count }}</button>
+
+  <!-- computed -->
+  <button @click="toggleFail">Are we good? {{ allGood }}</button>
+
+  <!-- invoke methods -->
+  <button @click="toggleFail">Are we good? {{ allGoodUsingMethod() }}</button>
+
+  <!-- writable -->
+  <p>What's your name?</p>
+  <input
+    type="text"
+    :value="fullName"
+    @input="(event) => (fullName = event.target.value)"
+  />
+  <p>Your beautiful name is {{ fullName }}</p>
 </template>
 
 <!-- <script>
@@ -26,6 +41,7 @@ import {
   nextTick,
   onRenderTriggered,
   onRenderTracked,
+  computed,
 } from "vue";
 
 const count = ref(0);
@@ -44,6 +60,50 @@ const incrementCount = () => state.count++;
 const stateProxy = reactive(state);
 console.log(originalObj == state); //false
 console.log(stateProxy == state); //true
+
+//computed
+const complexObj = reactive({
+  id: 1,
+  names: [1, 2, 3, 4],
+  ranks: { 1: 4, 2: 3, 3: 1, 4: 2 },
+  allFail: false,
+});
+
+//we may want to get ranks of avaibale members
+let allGood = computed(() => {
+  return (
+    complexObj.names.length == Object.keys(complexObj.ranks).length &&
+    !complexObj.allFail
+  );
+});
+
+const complexObjUsingMethod = reactive(complexObj);
+
+//using invoke method
+const allGoodUsingMethod = () => {
+  return (
+    complexObjUsingMethod.names.length ==
+      Object.keys(complexObjUsingMethod.ranks).length &&
+    !complexObjUsingMethod.allFail
+  );
+};
+
+const toggleFail = () => (complexObj.allFail = !complexObj.allFail);
+
+//writable computed
+const firstName = ref("Sai");
+const lastName = ref("Vikas");
+
+const fullName = computed({
+  //getter
+  get() {
+    return firstName.value + " " + lastName.value;
+  },
+  //setter
+  set(newVal) {
+    [firstName.value, lastName.value] = newVal.split(" ");
+  },
+});
 
 //debugger events
 //triggers 2 times when accessing count and state in template
