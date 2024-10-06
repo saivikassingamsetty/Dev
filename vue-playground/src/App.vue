@@ -4,7 +4,8 @@
     <!-- <ReactivityBasics /> -->
     <!-- <ClassStyleBindings /> -->
     <!-- <ConditionalAndListRendering /> -->
-    <EventHandling />
+    <!-- <EventHandling /> -->
+    <FormInputBindings />
   </div>
 </template>
 
@@ -14,4 +15,5 @@ import ReactivityBasics from "./components/ReactivityBasics.vue";
 import ClassStyleBindings from "./components/ClassStyleBindings.vue";
 import ConditionalAndListRendering from "./components/ConditionalAndListRendering.vue";
 import EventHandling from "./components/EventHandling.vue";
+import FormInputBindings from "./components/FormInputBindings.vue";
 </script>
