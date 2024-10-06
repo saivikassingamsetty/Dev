@@ -3,7 +3,8 @@
     <!-- <TemplateBasics /> -->
     <!-- <ReactivityBasics /> -->
     <!-- <ClassStyleBindings /> -->
-    <ConditionalAndListRendering />
+    <!-- <ConditionalAndListRendering /> -->
+    <EventHandling />
   </div>
 </template>
 
@@ -12,4 +13,5 @@ import TemplateBasics from "./components/TemplateBasics.vue";
 import ReactivityBasics from "./components/ReactivityBasics.vue";
 import ClassStyleBindings from "./components/ClassStyleBindings.vue";
 import ConditionalAndListRendering from "./components/ConditionalAndListRendering.vue";
+import EventHandling from "./components/EventHandling.vue";
 </script>
