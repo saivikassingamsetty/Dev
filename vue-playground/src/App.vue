@@ -5,7 +5,8 @@
     <!-- <ClassStyleBindings /> -->
     <!-- <ConditionalAndListRendering /> -->
     <!-- <EventHandling /> -->
-    <FormInputBindings />
+    <!-- <FormInputBindings /> -->
+    <LifeCycleHooks />
   </div>
 </template>
 
@@ -16,4 +17,5 @@ import ClassStyleBindings from "./components/ClassStyleBindings.vue";
 import ConditionalAndListRendering from "./components/ConditionalAndListRendering.vue";
 import EventHandling from "./components/EventHandling.vue";
 import FormInputBindings from "./components/FormInputBindings.vue";
+import LifeCycleHooks from "./components/LifeCycleHooks.vue";
 </script>
