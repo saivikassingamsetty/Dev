@@ -6,7 +6,8 @@
     <!-- <ConditionalAndListRendering /> -->
     <!-- <EventHandling /> -->
     <!-- <FormInputBindings /> -->
-    <LifeCycleHooks />
+    <!-- <LifeCycleHooks /> -->
+    <Watchers />
   </div>
 </template>
 
@@ -18,4 +19,5 @@ import ConditionalAndListRendering from "./components/ConditionalAndListRenderin
 import EventHandling from "./components/EventHandling.vue";
 import FormInputBindings from "./components/FormInputBindings.vue";
 import LifeCycleHooks from "./components/LifeCycleHooks.vue";
+import Watchers from "./components/Watchers.vue";
 </script>
