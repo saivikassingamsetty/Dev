@@ -7,7 +7,8 @@
     <!-- <EventHandling /> -->
     <!-- <FormInputBindings /> -->
     <!-- <LifeCycleHooks /> -->
-    <Watchers />
+    <!-- <Watchers /> -->
+    <TemplateRefs />
   </div>
 </template>
 
@@ -20,4 +21,5 @@ import EventHandling from "./components/EventHandling.vue";
 import FormInputBindings from "./components/FormInputBindings.vue";
 import LifeCycleHooks from "./components/LifeCycleHooks.vue";
 import Watchers from "./components/Watchers.vue";
+import TemplateRefs from "./components/TemplateRefs.vue";
 </script>
