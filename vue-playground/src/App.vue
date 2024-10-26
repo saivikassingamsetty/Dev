@@ -8,7 +8,8 @@
     <!-- <FormInputBindings /> -->
     <!-- <LifeCycleHooks /> -->
     <!-- <Watchers /> -->
-    <TemplateRefs />
+    <!-- <TemplateRefs /> -->
+    <ComponentBasics />
   </div>
 </template>
 
@@ -22,4 +23,5 @@ import FormInputBindings from "./components/FormInputBindings.vue";
 import LifeCycleHooks from "./components/LifeCycleHooks.vue";
 import Watchers from "./components/Watchers.vue";
 import TemplateRefs from "./components/TemplateRefs.vue";
+import ComponentBasics from "./components/ComponentBasics.vue";
 </script>
