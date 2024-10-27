@@ -16,10 +16,12 @@
 
   <slot name="custom" custom-msg="Hi">Default Msg</slot>
   <slot my-msg="Hello"></slot>
+
+  <input :value="injectedRef" @input="updateFunc" />
 </template>
 
 <script setup>
-import { watch, toRefs, onBeforeUpdate, useAttrs } from "vue";
+import { watch, toRefs, onBeforeUpdate, useAttrs, inject } from "vue";
 // array syntax
 // const props = defineProps(["foo"]);
 
@@ -86,6 +88,9 @@ const [commonData, commonDataModifiers] = defineModel("commonData", {
 const attrs = useAttrs();
 
 console.log(attrs);
+
+const [injectedRef, updateFunc] = inject("provided", "default");
+console.log(injectedRef);
 
 watch(foo, () => {
   console.log("foo changed", foo);

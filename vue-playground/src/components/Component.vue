@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, provide } from "vue";
 import Child from "./ComponentChild.vue";
 
 const msg = ref("");
@@ -49,4 +49,10 @@ const recieved = ref("");
 
 const commonMsg = ref("");
 const commonData = ref("");
+
+const updateMsg = (m) => {
+  msgToChild.value = m.target.value;
+};
+
+provide("provided", [msgToChild, updateMsg]);
 </script>
