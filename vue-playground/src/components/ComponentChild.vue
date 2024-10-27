@@ -3,6 +3,13 @@
   <p>Message is {{ foo }}</p>
   <button @click="emit('goo', 'Hello from Child')">Send msg</button>
   <div v-if="isCustomised">Customised Message</div>
+
+  <label for="text">Common Msg</label>
+  <input type="text" id="text" v-model="commonMsg" style="margin-left: 10px" />
+
+  <br />
+  <label for="text">Common Data</label>
+  <input type="text" id="text" v-model="commonData" style="margin-left: 10px" />
 </template>
 
 <script setup>
@@ -57,11 +64,25 @@ const emit = defineEmits({
 //to make that reactive either we need to make it a getter, ref, computed, toRefs
 const { foo } = toRefs(props);
 
+const commonMsg = defineModel("commonMsg", { required: true });
+
+const [commonData, commonDataModifiers] = defineModel("commonData", {
+  set(value) {
+    if (commonDataModifiers.capitalize) {
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
+    return value;
+  },
+  required: true,
+});
+
 watch(foo, () => {
   console.log("foo changed", foo);
 });
 
 onBeforeUpdate(() => {
+  //triggers everytime before DOM updates
   console.log("Bui");
 });
 </script>
