@@ -1,5 +1,6 @@
 <template>
-  <h1>Child</h1>
+  <h1 v-bind="$attrs">Child</h1>
+  <div>Custom Attributes {{ attrs["custom-attr"] }}</div>
   <p>Message is {{ foo }}</p>
   <button @click="emit('goo', 'Hello from Child')">Send msg</button>
   <div v-if="isCustomised">Customised Message</div>
@@ -13,7 +14,7 @@
 </template>
 
 <script setup>
-import { watch, toRefs, onBeforeUpdate } from "vue";
+import { watch, toRefs, onBeforeUpdate, useAttrs } from "vue";
 // array syntax
 // const props = defineProps(["foo"]);
 
@@ -76,6 +77,10 @@ const [commonData, commonDataModifiers] = defineModel("commonData", {
   },
   required: true,
 });
+
+const attrs = useAttrs();
+
+console.log(attrs);
 
 watch(foo, () => {
   console.log("foo changed", foo);

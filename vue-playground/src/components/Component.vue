@@ -16,6 +16,13 @@
     is-customised
     v-model:common-msg="commonMsg"
     v-model:common-data.capitalize="commonData"
+    custom-attr="Hi"
+    style="border: 2px solid red"
+    @click="
+      () => {
+        alert('Hi');
+      }
+    "
   />
   <!-- <Child v-bind="msgs" @goo="recieved = $event" /> -->
 </template>
