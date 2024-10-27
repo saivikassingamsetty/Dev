@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import { ref, provide } from "vue";
-import Child from "./ComponentChild.vue";
+import { ref, provide, defineAsyncComponent, hydrateOnIdle } from "vue";
+// import Child from "./ComponentChild.vue";
 
 const msg = ref("");
 const msgToChild = ref("msg");
@@ -53,6 +53,20 @@ const commonData = ref("");
 const updateMsg = (m) => {
   msgToChild.value = m.target.value;
 };
+
+//lazy loading and lazy hydration
+const Child = defineAsyncComponent({
+  //main loader function
+  loader: () => import("./ComponentChild.vue"),
+  delay: 200,
+  //Temporary loading component
+  loadingComponent: {},
+  //when error occurs while loading
+  errorComponent: {},
+  timeout: 1000,
+  //hydration strategy
+  hydrate: hydrateOnIdle(),
+});
 
 provide("provided", [msgToChild, updateMsg]);
 </script>
