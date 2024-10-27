@@ -23,7 +23,12 @@
         alert('Hi');
       }
     "
-  />
+  >
+    <!-- custom slot -->
+    <template #custom="{ customMsg }">{{ customMsg }}</template>
+    <!-- default -->
+    <template v-slot="{ myMsg }">{{ myMsg }}</template>
+  </Child>
   <!-- <Child v-bind="msgs" @goo="recieved = $event" /> -->
 </template>
 
@@ -32,7 +37,8 @@ import { ref } from "vue";
 import Child from "./ComponentChild.vue";
 
 const msg = ref("");
-const msgToChild = ref("");
+const msgToChild = ref("msg");
+const secondMsg = ref("");
 const recieved = ref("");
 
 // const msgs = {

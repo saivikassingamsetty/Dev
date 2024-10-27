@@ -11,6 +11,11 @@
   <br />
   <label for="text">Common Data</label>
   <input type="text" id="text" v-model="commonData" style="margin-left: 10px" />
+
+  <br />
+
+  <slot name="custom" custom-msg="Hi">Default Msg</slot>
+  <slot my-msg="Hello"></slot>
 </template>
 
 <script setup>
