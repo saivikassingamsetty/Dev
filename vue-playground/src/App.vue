@@ -9,7 +9,10 @@
     <!-- <LifeCycleHooks /> -->
     <!-- <Watchers /> -->
     <!-- <TemplateRefs /> -->
-    <ComponentBasics />
+    <!-- <ComponentBasics /> -->
+    <ComponentWithoutSetup />
+    <div style="padding: 10px 0">---------------</div>
+    <Component />
   </div>
 </template>
 
@@ -24,4 +27,6 @@ import LifeCycleHooks from "./components/LifeCycleHooks.vue";
 import Watchers from "./components/Watchers.vue";
 import TemplateRefs from "./components/TemplateRefs.vue";
 import ComponentBasics from "./components/ComponentBasics.vue";
+import ComponentWithoutSetup from "./components/ComponentWithoutSetup.vue";
+import Component from "./components/Component.vue";
 </script>
