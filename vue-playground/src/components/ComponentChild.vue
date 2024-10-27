@@ -22,12 +22,34 @@ const props = defineProps({
   isCustomised: [Boolean, Number],
 });
 
+//typing works with ts
 // const props = defineProps<{
 //     foo: string,
 //     isCustomised?: boolean
 // }>();
 
-const emit = defineEmits(["goo"]);
+//array syntax
+// const emit = defineEmits(["goo"]);
+
+//object
+const emit = defineEmits({
+  // no validation
+  // goo: null,
+
+  //validating
+  goo: (value) => {
+    if (value) return true;
+    else {
+      console.log("Invalid Payload", value);
+      return false;
+    }
+  },
+});
+
+//typing works with ts
+// const emit = defineEmits<{
+//   (e: 'goo', value: string): void
+// }>();
 
 //this only works one time, not reactive
 // const { foo } = props;
