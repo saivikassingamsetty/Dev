@@ -10,9 +10,10 @@
     <!-- <Watchers /> -->
     <!-- <TemplateRefs /> -->
     <!-- <ComponentBasics /> -->
-    <ComponentWithoutSetup />
-    <div style="padding: 10px 0">---------------</div>
-    <Component />
+    <!-- <ComponentWithoutSetup /> -->
+    <!-- <div style="padding: 10px 0">---------------</div> -->
+    <!-- <Component /> -->
+    <MouseTracking />
   </div>
 </template>
 
@@ -29,4 +30,5 @@ import TemplateRefs from "./components/TemplateRefs.vue";
 import ComponentBasics from "./components/ComponentBasics.vue";
 import ComponentWithoutSetup from "./components/ComponentWithoutSetup.vue";
 import Component from "./components/Component.vue";
+import MouseTracking from "./components/composables/MouseTracking.vue";
 </script>
