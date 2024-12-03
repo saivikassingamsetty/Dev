@@ -13,7 +13,8 @@
     <!-- <ComponentWithoutSetup /> -->
     <!-- <div style="padding: 10px 0">---------------</div> -->
     <!-- <Component /> -->
-    <MouseTracking />
+    <!-- <MouseTracking /> -->
+    <CustomDirectives />
   </div>
 </template>
 
@@ -31,4 +32,5 @@ import ComponentBasics from "./components/ComponentBasics.vue";
 import ComponentWithoutSetup from "./components/ComponentWithoutSetup.vue";
 import Component from "./components/Component.vue";
 import MouseTracking from "./components/composables/MouseTracking.vue";
+import CustomDirectives from "./components/CustomDirectives.vue";
 </script>
