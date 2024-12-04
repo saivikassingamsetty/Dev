@@ -1,9 +1,12 @@
-export const myPlugin = {
-  install(app, options) {
-    //define a translate function globally which passed a key
+export default {
+  install: (app, options) => {
+    app.provide("i18n", options);
+
+    // inject a globally available $translate() method
     app.config.globalProperties.$translate = (key) => {
-      //search in user defined options if it available to translate
-      key.split(".").reduce((o, i) => {
+      // retrieve a nested property in `options`
+      // using `key` as the path
+      return key.split(".").reduce((o, i) => {
         if (o) return o[i];
       }, options);
     };
