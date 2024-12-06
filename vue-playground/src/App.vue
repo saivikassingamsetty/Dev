@@ -15,7 +15,8 @@
     <!-- <Component /> -->
     <!-- <MouseTracking /> -->
     <!-- <CustomDirectives /> -->
-    <Plugins />
+    <!-- <Plugins /> -->
+    <TransitionDemo />
   </div>
 </template>
 
@@ -35,4 +36,5 @@ import Component from "./components/Component.vue";
 import MouseTracking from "./components/composables/MouseTracking.vue";
 import CustomDirectives from "./components/CustomDirectives.vue";
 import Plugins from "./components/Plugins.vue";
+import TransitionDemo from "./components/built-in-components/TransitionDemo.vue";
 </script>
