@@ -46,9 +46,9 @@ function onEnter(el, done) {
 </script>
 
 <style>
-button {
+/* button {
   margin: 10px;
-}
+} */
 
 .list-move,
 .list-enter-active,
