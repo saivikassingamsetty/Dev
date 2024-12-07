@@ -17,7 +17,8 @@
     <!-- <CustomDirectives /> -->
     <!-- <Plugins /> -->
     <!-- <TransitionDemo /> -->
-    <TransitionGroupDemo />
+    <!-- <TransitionGroupDemo /> -->
+    <KeepAliveDemo />
   </div>
 </template>
 
@@ -39,4 +40,5 @@ import CustomDirectives from "./components/CustomDirectives.vue";
 import Plugins from "./components/Plugins.vue";
 import TransitionDemo from "./components/built-in-components/TransitionDemo.vue";
 import TransitionGroupDemo from "./components/built-in-components/TransitionGroupDemo.vue";
+import KeepAliveDemo from "./components/built-in-components/KeepAliveDemo.vue";
 </script>
