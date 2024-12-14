@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Vue Leearnings -->
     <!-- <TemplateBasics /> -->
     <!-- <ReactivityBasics /> -->
     <!-- <ClassStyleBindings /> -->
@@ -19,11 +20,15 @@
     <!-- <TransitionDemo /> -->
     <!-- <TransitionGroupDemo /> -->
     <!-- <KeepAliveDemo /> -->
-    <TeleportDemo />
+    <!-- <TeleportDemo /> -->
+
+    <!-- Vue Router Learnings -->
+    <BasicRouterExample />
   </div>
 </template>
 
 <script setup>
+// Vue
 import TemplateBasics from "./components/TemplateBasics.vue";
 import ReactivityBasics from "./components/ReactivityBasics.vue";
 import ClassStyleBindings from "./components/ClassStyleBindings.vue";
@@ -43,4 +48,7 @@ import TransitionDemo from "./components/built-in-components/TransitionDemo.vue"
 import TransitionGroupDemo from "./components/built-in-components/TransitionGroupDemo.vue";
 import KeepAliveDemo from "./components/built-in-components/KeepAliveDemo.vue";
 import TeleportDemo from "./components/built-in-components/TeleportDemo.vue";
+
+// Vue Router
+import BasicRouterExample from "./components/vue-router/BasicRouterExample.vue";
 </script>
