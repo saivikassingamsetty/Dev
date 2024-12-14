@@ -1,5 +1,25 @@
 <template>
-  <h2>Hi, I'm {{ route.params.id }}</h2>
+  <h2>Hi, I'm {{ route.params.id || route.params.userName }}</h2>
+  <RouterLink
+    :to="{
+      name: 'profile',
+      params: { userName: route.params.id || route.params.userName },
+    }"
+    style="margin: 10px"
+    >Profile</RouterLink
+  >
+  <!-- <RouterLink to="/users/sai/profile" style="margin: 10px"
+    >Meet Sai profile</RouterLink
+  > -->
+  <RouterLink
+    :to="{
+      name: 'posts',
+      params: { userName: route.params.id || route.params.userName },
+    }"
+    style="margin: 10px"
+    >Posts</RouterLink
+  >
+  <RouterView />
 </template>
 
 <script setup>
