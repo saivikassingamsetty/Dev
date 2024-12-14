@@ -31,6 +31,10 @@ console.log(toValue(router), toValue(route));
 
 const addUser = (userName) => {
   //makes navigation
-  router.push({ name: "profile", params: { id: "lakshmi", userName } });
+  router.push({
+    name: "profile",
+    params: { id: "lakshmi", userName },
+    props: true,
+  });
 };
 </script>
