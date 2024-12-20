@@ -19,10 +19,14 @@
     <br>
     <input type="text" v-model="todoText">
     <button :disabled="!todoText" @click="addTodo">Add</button>
+    <br>
+    <div></div>
+    <button @click="resetTodos">Reset</button>
+    <button @click="saveTodos">Save</button>
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import {ref, watch} from 'vue';
 import { storeToRefs } from "pinia";
 import { useCounterStore, useCountStore, useTodos} from "../store/todoStore";
 
@@ -36,11 +40,36 @@ const todos = useTodos();
 const {filteredTodos, filter} = storeToRefs(todos);
 
 const addTodo = () => {
-    console.log('hi')
     if (todoText.value) {
-        console.log('bye')
+        //triggers a direct mutation
         todos.addTodo({text: todoText.value, isFinished: false});
         todoText.value = '';
     }
 }
+
+const resetTodos = () => {
+    todos.$reset();
+}
+
+const saveTodos = () => {
+    //triggers a patch mutation
+    todos.$patch((state) => {
+        state.isSaved = true;
+        console.log(state.isSaved)
+    })
+}
+
+watch(() => todos.filter, (value) => {
+    console.log('filter', value);
+})
+
+watch(() => todos.isSaved, (value) => {
+    console.log('isSaved', value);
+})
+
+//can have all watcher options
+todos.$subscribe((mutatuion, state) => {
+    console.log("State changed", mutatuion, state)
+}, {immediate: true, deep: true, flush: true})
+
 </script>

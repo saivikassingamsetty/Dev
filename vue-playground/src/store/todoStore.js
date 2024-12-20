@@ -31,6 +31,7 @@ export const useTodos = defineStore("todos", () => {
   const todos = ref([]);
   const filter = ref("all");
   const nextId = ref(0);
+  const isSaved = ref(false);
 
   //getters
   const finishedTodos = computed(() =>
@@ -55,5 +56,11 @@ export const useTodos = defineStore("todos", () => {
     todos.value.push({ id: nextId.value++, text, isFinished });
   };
 
-  return { filter, filteredTodos, addTodo };
+  const $reset = () => {
+    todos.value = [];
+    filter.value = "all";
+    nextId.value = 0;
+  };
+
+  return { filter, isSaved, filteredTodos, addTodo, $reset };
 });
