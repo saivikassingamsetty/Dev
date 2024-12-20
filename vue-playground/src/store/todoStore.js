@@ -50,6 +50,10 @@ export const useTodos = defineStore("todos", () => {
         return unFinishedTodos.value;
     }
   });
+  //getters accepting args
+  const isEmptyTasks = computed(() => {
+    return (tab) => tab == 'finished' ? todos.value.length: 0;
+  })
 
   //actions
   const addTodo = ({ text, isFinished }) => {
