@@ -19,6 +19,13 @@ app.use(router);
 
 //use pinia
 const pinia = createPinia();
+//plugins
+function SecretPiniaPlugin() {
+  return { secret: "the cake is a lie" };
+}
+
+pinia.use(SecretPiniaPlugin);
+
 app.use(pinia);
 
 //mounting

@@ -39,6 +39,9 @@ const todoText = ref('');
 const todos = useTodos();
 const {filteredTodos, filter} = storeToRefs(todos);
 
+//defined through plugin
+console.log(todos.secret)
+
 const addTodo = () => {
     if (todoText.value) {
         //triggers a direct mutation
