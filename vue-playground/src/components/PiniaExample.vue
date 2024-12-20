@@ -26,7 +26,7 @@
 </template>
 
 <script setup>
-import {ref, watch} from 'vue';
+import {ref, watch, onUnmounted} from 'vue';
 import { storeToRefs } from "pinia";
 import { useCounterStore, useCountStore, useTodos} from "../store/todoStore";
 
@@ -72,4 +72,32 @@ todos.$subscribe((mutatuion, state) => {
     console.log("State changed", mutatuion, state)
 }, {immediate: true, deep: true, flush: true})
 
+//subscribing actions
+const unsubscribe = todos.$onAction(({name, store, args, after, onError}) => {
+    // a shared variable for this specific action call
+    const startTime = Date.now()
+    // this will trigger before an action on `store` is executed
+    console.log(`Start "${name}" with params [${args.join(', ')}].`)
+
+    // this will trigger if the action succeeds and after it has fully run.
+    // it waits for any returned promised
+    after((result) => {
+      console.log(
+        `Finished "${name}" after ${
+          Date.now() - startTime
+        }ms.\nResult: ${result}.`
+      )
+    })
+
+    // this will trigger if the action throws or returns a promise that rejects
+    onError((error) => {
+      console.warn(
+        `Failed "${name}" after ${Date.now() - startTime}ms.\nError: ${error}.`
+      )
+    })
+})
+
+onUnmounted(() => {
+    unsubscribe();
+})
 </script>
