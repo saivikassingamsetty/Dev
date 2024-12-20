@@ -23,7 +23,10 @@
     <!-- <TeleportDemo /> -->
 
     <!-- Vue Router Learnings -->
-    <BasicRouterExample />
+    <!-- <BasicRouterExample /> -->
+
+    <!-- Pinia -->
+    <PiniaExample />
   </div>
 </template>
 
@@ -51,4 +54,7 @@ import TeleportDemo from "./components/built-in-components/TeleportDemo.vue";
 
 // Vue Router
 import BasicRouterExample from "./components/vue-router/BasicRouterExample.vue";
+
+// Pinia
+import PiniaExample from './components/PiniaExample.vue';
 </script>
