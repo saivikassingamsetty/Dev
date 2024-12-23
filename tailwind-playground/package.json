@@ -1,0 +1,19 @@
+{
+  "name": "tailwind-playground",
+  "version": "1.0.0",
+  "description": "This is a Playground for tailwind learnings",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch",
+    "prettier": "npx prettier --write **/*.html"
+  },
+  "keywords": [
+    "Tailwind",
+    "CSS"
+  ],
+  "author": "Sai Vikas Singamsetty",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.6.9"
+  }
+}
