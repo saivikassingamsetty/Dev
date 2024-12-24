@@ -9,7 +9,7 @@
 
   <body class="min-h-screen dark:bg-black dark:text-white">
     <!-- header occupies full width of the screen -->
-    <header class="bg-teal-700 sticky top-0 z-10 text-white">
+    <header id="header" class="bg-teal-700 sticky top-0 z-10 text-white">
       <!-- occupies only certain fixed width -->
       <section class="max-w-4xl mx-auto p-4 flex justify-between items-center">
         <!-- Name -->
@@ -219,6 +219,30 @@
         </form>
       </section>
     </main>
-    <footer></footer>
+    <footer id="footer" class="bg-teal-700 text-white text-xl">
+      <section
+        class="max-w-4xl mx-auto p-4 flex flex-col sm:flex-row justify-between"
+      >
+        <address>
+          <h2>Acme Rockets-Powered Products, Inc.</h2>
+          555 Astro Way <br />
+          FailField, New Jersey - 12345-5555 <br />
+          <a href="mailto:inquiries@akmerockets.com"
+            >Inquiries@AkmeRockets.com</a
+          >
+          <br />
+          Phone: <a href="tel:+1555555555555">(555) 555-555555</a>
+        </address>
+        <nav class="hidden gap-2 md:flex flex-col" aria-label="footer">
+          <a href="#rockets" class="hover:opacity-90">Our Rockets</a>
+          <a href="#testimonials" class="hover:opacity-90">Testimonials</a>
+          <a href="#contact" class="hover:opacity-90">Contact Us</a>
+        </nav>
+        <div class="flex flex-col sm:gap-2">
+          <p class="text-right">Copyright &copy; <span id="year">2022</span></p>
+          <p class="text-right">All Rights Reserved</p>
+        </div>
+      </section>
+    </footer>
   </body>
 </html>
