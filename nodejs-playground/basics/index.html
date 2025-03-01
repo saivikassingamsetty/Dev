@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node App</title>
+    <style>
+      .toolbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem;
+
+        h1 {
+          font-size: xx-large;
+        }
+      }
+
+      nav {
+        display: flex;
+        align-items: flex-end;
+        gap: 1rem;
+
+        > a {
+          font-size: x-large;
+          background-color: wheat;
+          padding: 1rem;
+          border: 1px;
+          border-radius: 20%;
+        }
+
+        > a:hover {
+          background-color: orange;
+        }
+      }
+
+      .main {
+        font-size: xx-large;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="toolbar">
+      <h1>Node App</h1>
+      <nav>
+        <a href="/home">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/products">Products</a>
+      </nav>
+    </section>
+
+    <section class="main">
+      <h1>Welcome to the Node App</h1>
+      {{%CONTENT%}}
+    </section>
+  </body>
+</html>
