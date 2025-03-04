@@ -43,6 +43,56 @@
         align-items: center;
         margin: 2rem;
       }
+      .page-content {
+        text-align: center;
+        padding-top: 40px;
+      }
+      .products-list {
+        padding: 10px 10px;
+        margin: 2px auto;
+        color: #fff;
+        border-bottom: #232323 1.5px solid;
+      }
+      .products-detail {
+        display: flex;
+      }
+      .product-image {
+        width: 140px;
+        height: 140px;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 0px 10px;
+      }
+      .product-specs {
+        text-align: left;
+        margin: 0px 10px;
+      }
+      .product-page {
+        padding: 20px 50px;
+      }
+      .product-desc {
+        display: flex;
+        width: 100%;
+      }
+      .product-desc-image {
+        margin-right: 20px;
+      }
+      .product-details-info {
+        margin-left: 40px;
+        text-align: left;
+      }
+      .product-desc-p {
+        margin-top: 4px;
+        font-size: 14px;
+      }
+      .product-desc-details {
+        text-align: left;
+        margin: 20px 0px;
+      }
+      .product-details-desc {
+        margin-top: 60px;
+        font-size: 16px;
+      }
     </style>
   </head>
   <body>
@@ -59,6 +109,8 @@
     <section class="main">
       <h1>Welcome to the Node App</h1>
       {{%CONTENT%}}
+
+      <product-details></product-details>
     </section>
   </body>
 </html>
