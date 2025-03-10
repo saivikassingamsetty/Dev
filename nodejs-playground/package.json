@@ -16,5 +16,11 @@
     "Backend"
   ],
   "author": "Sai Vikas Singamsetty",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }
