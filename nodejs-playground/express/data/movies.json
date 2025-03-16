@@ -1,20 +1,6 @@
 [
-  {
-    "id": 2,
-    "name": "Bahubali",
-    "releasedYear": 2015,
-    "duration": 150
-  },
-  {
-    "id": 3,
-    "name": "Bahubali 2",
-    "releasedYear": 2018,
-    "duration": 155
-  },
-  {
-    "id": 1,
-    "name": "RRR",
-    "releasedYear": 2023,
-    "duration": 147
-  }
+  { "id": 1, "name": "Bahubali", "releasedYear": 2015, "duration": 150 },
+  { "id": 2, "name": "Vikas Biography", "releasedYear": 2040, "duration": 180 },
+  { "id": 3, "name": "RRR", "releasedYear": 2023, "duration": 147 },
+  { "id": 4, "name": "Interstellar", "releasedYear": 2011, "duration": 160 }
 ]

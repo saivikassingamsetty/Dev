@@ -3,6 +3,11 @@ import * as fs from "node:fs";
 
 const app = express();
 
+//middleware to have a body property on req object
+app.use(express.json());
+
+const MOVIES_ENDPOINT = "/api/v1/movies";
+
 const movies = JSON.parse(fs.readFileSync("./data/movies.json"));
 
 app.get("/", (req, res) => {
@@ -26,10 +31,91 @@ app.get("/api/v1/movies", (req, res, next) => {
 
     res.status(200).json({
       status: "success",
+      count: movies.length,
       data: { movies },
     });
   } catch (error) {
     res.send(404).send("Movies data not found");
+  }
+});
+
+//gets called when a POST request has been made
+app.post("/api/v1/movies", (req, res) => {
+  const nextId = movies[movies.length - 1].id + 1;
+  const newMovie = Object.assign({ id: nextId }, req.body);
+  movies.push(newMovie);
+  fs.writeFile("./data/movies.json", JSON.stringify(movies), () => {
+    res.status(201).json({
+      status: "success",
+      data: {
+        movie: newMovie,
+      },
+    });
+  });
+});
+
+//get a single movie
+app.get(MOVIES_ENDPOINT + "/:id", (req, res) => {
+  const { params } = req;
+  const movie = movies.find(({ id }) => id == params.id);
+  if (movie) {
+    res.status(200).json(movie);
+  } else {
+    res.status(404).send("No Movie Found");
+  }
+});
+
+//update by id
+// app.put(MOVIES_ENDPOINT + "/:id", (req, res) => {
+//   const { params, body } = req;
+//   const movieId = movies.findIndex(({ id }) => id == params.id);
+//   console.log(movieId, params.id);
+//   if (movieId != -1) {
+//     movies[movieId] = { id: movies[movieId].id, ...body };
+//     fs.writeFile("./data/movies.json", JSON.stringify(movies), () => {
+//       res.status(200).json({
+//         status: "success",
+//         movies: movies,
+//       });
+//     });
+//   } else {
+//     res.status(404).send("No Movie Found");
+//   }
+// });
+
+//update by id
+app.patch(MOVIES_ENDPOINT + "/:id", (req, res) => {
+  const { params, body } = req;
+  const movieId = movies.findIndex(({ id }) => id == params.id);
+  console.log(movieId, params.id);
+  if (movieId != -1) {
+    movies[movieId] = { id: movies[movieId].id, ...body };
+    fs.writeFile("./data/movies.json", JSON.stringify(movies), () => {
+      res.status(200).json({
+        status: "success",
+        movies: movies,
+      });
+    });
+  } else {
+    res.status(404).send("No Movie Found");
+  }
+});
+
+//delete by id
+app.delete(MOVIES_ENDPOINT + "/:id", (req, res) => {
+  const id = +req.params.id;
+  const deleteId = movies.findIndex((mv) => mv.id === id);
+
+  if (deleteId != -1) {
+    movies.splice(deleteId, 1);
+    fs.writeFile("./data/movies.json", JSON.stringify(movies), () => {
+      res.status(200).json({
+        status: "success",
+        movies: movies,
+      });
+    });
+  } else {
+    res.status(404).send("No Movie Found");
   }
 });
 
