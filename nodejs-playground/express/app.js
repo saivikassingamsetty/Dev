@@ -10,19 +10,16 @@ const MOVIES_ENDPOINT = "/api/v1/movies";
 
 const movies = JSON.parse(fs.readFileSync("./data/movies.json"));
 
-app.get("/", (req, res) => {
+const handleBase = (req, res) => {
   // sends text/html
   //   res.setHeader("Content-Type", "application/json");
   //   res.status(200).send("Hello World");
 
   //sends json
   res.status(200).json({ name: "Vikas" });
-});
+};
 
-// app.post("/", () => {});
-
-//creating a web api GET /api/v1/movies
-app.get("/api/v1/movies", (req, res, next) => {
+const getAllMovies = (req, res, next) => {
   res.setHeader("Content-Type", "application/json");
 
   try {
@@ -37,10 +34,9 @@ app.get("/api/v1/movies", (req, res, next) => {
   } catch (error) {
     res.send(404).send("Movies data not found");
   }
-});
+};
 
-//gets called when a POST request has been made
-app.post("/api/v1/movies", (req, res) => {
+const createMovie = (req, res) => {
   const nextId = movies[movies.length - 1].id + 1;
   const newMovie = Object.assign({ id: nextId }, req.body);
   movies.push(newMovie);
@@ -52,18 +48,7 @@ app.post("/api/v1/movies", (req, res) => {
       },
     });
   });
-});
-
-//get a single movie
-app.get(MOVIES_ENDPOINT + "/:id", (req, res) => {
-  const { params } = req;
-  const movie = movies.find(({ id }) => id == params.id);
-  if (movie) {
-    res.status(200).json(movie);
-  } else {
-    res.status(404).send("No Movie Found");
-  }
-});
+};
 
 //update by id
 // app.put(MOVIES_ENDPOINT + "/:id", (req, res) => {
@@ -83,8 +68,17 @@ app.get(MOVIES_ENDPOINT + "/:id", (req, res) => {
 //   }
 // });
 
-//update by id
-app.patch(MOVIES_ENDPOINT + "/:id", (req, res) => {
+const getMovie = (req, res) => {
+  const { params } = req;
+  const movie = movies.find(({ id }) => id == params.id);
+  if (movie) {
+    res.status(200).json(movie);
+  } else {
+    res.status(404).send("No Movie Found");
+  }
+};
+
+const updateMovie = (req, res) => {
   const { params, body } = req;
   const movieId = movies.findIndex(({ id }) => id == params.id);
   console.log(movieId, params.id);
@@ -99,10 +93,9 @@ app.patch(MOVIES_ENDPOINT + "/:id", (req, res) => {
   } else {
     res.status(404).send("No Movie Found");
   }
-});
+};
 
-//delete by id
-app.delete(MOVIES_ENDPOINT + "/:id", (req, res) => {
+const deleteMovie = (req, res) => {
   const id = +req.params.id;
   const deleteId = movies.findIndex((mv) => mv.id === id);
 
@@ -117,7 +110,23 @@ app.delete(MOVIES_ENDPOINT + "/:id", (req, res) => {
   } else {
     res.status(404).send("No Movie Found");
   }
-});
+};
+
+// app.get("/", handleBase);
+// app.get("/api/v1/movies", getAllMovies);
+// app.get(MOVIES_ENDPOINT + "/:id", getMovie);
+// app.post("/api/v1/movies", createMovie);
+// app.patch(MOVIES_ENDPOINT + "/:id", updateMovie);
+// app.delete(MOVIES_ENDPOINT + "/:id", deleteMovie);
+
+//we can also do this!!
+app.route(MOVIES_ENDPOINT).get(getAllMovies).post(createMovie);
+
+app
+  .route(MOVIES_ENDPOINT + "/:id")
+  .get(getMovie)
+  .patch(updateMovie)
+  .delete(deleteMovie);
 
 app.listen(3000, () => {
   console.log("Server has started");
