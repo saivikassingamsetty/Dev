@@ -5,10 +5,18 @@ import {
   createMovie,
   updateMovie,
   deleteMovie,
+  checkId,
+  validateCreateMovieRequest,
 } from "./controllers/moviesController.js";
 
 const moviesRouter = express.Router();
-moviesRouter.route("/").get(getAllMovies).post(createMovie);
+
+moviesRouter.param("id", checkId);
+
+moviesRouter
+  .route("/")
+  .get(getAllMovies)
+  .post(validateCreateMovieRequest, createMovie);
 
 moviesRouter.param("id", (req, res, next, val) => {
   console.log("Movie id is", val);
