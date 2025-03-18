@@ -18,7 +18,12 @@ app.use((req, res, next) => {
   req.requestedAt = new Date();
   next();
 });
-app.use(morgan("dev"));
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
+app.use(express.static("./public"));
 
 // app.get("/", handleBase);
 // app.get("/api/v1/movies", getAllMovies);
