@@ -27,13 +27,6 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.static("./public"));
 
-// app.get("/", handleBase);
-// app.get("/api/v1/movies", getAllMovies);
-// app.get(MOVIES_ENDPOINT + "/:id", getMovie);
-// app.post("/api/v1/movies", createMovie);
-// app.patch(MOVIES_ENDPOINT + "/:id", updateMovie);
-// app.delete(MOVIES_ENDPOINT + "/:id", deleteMovie);
-
 //Routes
 app.use(MOVIES_ENDPOINT, moviesRouter);
 
