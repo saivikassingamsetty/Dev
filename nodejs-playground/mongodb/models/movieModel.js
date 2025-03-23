@@ -1,13 +1,17 @@
 import mongoose from "mongoose";
 import * as fs from "fs";
+import validator from "validator";
 
 const movieScheme = new mongoose.Schema(
   {
     name: {
       type: String,
       required: [true, "Name is required!"],
+      maxLengtth: [100, "Movie Name should be less than 100 characters"],
+      minLength: [4, "Movi Name should be greater than 4 character"],
       unique: true,
       trim: true,
+      validator: [validator.isAlpha, "Name should only has alphabetical"],
     },
     description: {
       type: String,
@@ -20,6 +24,13 @@ const movieScheme = new mongoose.Schema(
     },
     rating: {
       type: Number,
+      validate: {
+        validator: (rating) => {
+          return rating >= 1 && rating <= 10;
+        },
+        message:
+          "Rating should be greater than equals to 1 and less than equals to 10",
+      },
     },
     totalRatings: {
       type: Number,
